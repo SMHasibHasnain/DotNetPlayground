@@ -1,12 +1,19 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace _01_ProductCatalog.MVC.Models;
 
 public class Category
 {
+    [Column("Category_Name")]
+    [MaxLength(50)]
     public required string Name { get; set; }
 
-    public DateTime PostedTime { get; set; } = DateTime.UtcNow;   
+    [Column("Category_Creation_Time")]
+    public DateTime CreationTime { get; set; } = DateTime.UtcNow;   
 
-    public required Shop ShopId { get; set; }
+    [Column("Category_Shop_Id")]
+    public required string ShopId { get; set; }
 
     public required Shop Shop { get; set; }
 
