@@ -1,4 +1,4 @@
-using _01_ProductCatalog.MVC;
+using _01_ProductCatalog.MVC.Data;
 using AspNetCore.Scalar;
 using Microsoft.EntityFrameworkCore;
 

@@ -3,8 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace _01_ProductCatalog.MVC.Models;
 
+[Table("Shop_Categories")]
 public class Category
 {
+    [Key]
     [Column("Category_Name")]
     [MaxLength(50)]
     public required string Name { get; set; }
