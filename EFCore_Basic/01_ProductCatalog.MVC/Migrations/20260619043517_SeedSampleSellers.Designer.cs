@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _01_ProductCatalog.MVC.Data;
 
@@ -10,9 +11,11 @@ using _01_ProductCatalog.MVC.Data;
 namespace _01_ProductCatalog.MVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260619043517_SeedSampleSellers")]
+    partial class SeedSampleSellers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.9");
@@ -148,27 +151,27 @@ namespace _01_ProductCatalog.MVC.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "seller-1",
+                            Id = "019ede29-6976-7f78-9a60-60a851dc132d",
                             Bio = "It's a simple bio!",
                             DateOfBirth = new DateTime(2002, 7, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Hasib Hasnain",
-                            ProfileCreationTime = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ProfileCreationTime = new DateTime(2026, 6, 19, 4, 35, 16, 471, DateTimeKind.Utc).AddTicks(5021)
                         },
                         new
                         {
-                            Id = "seller-2",
+                            Id = "019ede29-6977-7506-9e28-5467d58a5890",
                             Bio = "Honest and Elegent Seller!",
                             DateOfBirth = new DateTime(2000, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Rahim Iqbal",
-                            ProfileCreationTime = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ProfileCreationTime = new DateTime(2026, 6, 19, 4, 35, 16, 471, DateTimeKind.Utc).AddTicks(7576)
                         },
                         new
                         {
-                            Id = "seller-3",
+                            Id = "019ede29-6977-7c31-8c79-b2b0b197832b",
                             Bio = "Selling My Used Bat Balls!",
                             DateOfBirth = new DateTime(1997, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Tamim Iqbal",
-                            ProfileCreationTime = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ProfileCreationTime = new DateTime(2026, 6, 19, 4, 35, 16, 471, DateTimeKind.Utc).AddTicks(7606)
                         });
                 });
 
