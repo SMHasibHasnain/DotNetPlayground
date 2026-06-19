@@ -144,32 +144,6 @@ namespace _01_ProductCatalog.MVC.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Shop_Sellers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "seller-1",
-                            Bio = "It's a simple bio!",
-                            DateOfBirth = new DateTime(2002, 7, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Hasib Hasnain",
-                            ProfileCreationTime = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = "seller-2",
-                            Bio = "Honest and Elegent Seller!",
-                            DateOfBirth = new DateTime(2000, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Rahim Iqbal",
-                            ProfileCreationTime = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = "seller-3",
-                            Bio = "Selling My Used Bat Balls!",
-                            DateOfBirth = new DateTime(1997, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Tamim Iqbal",
-                            ProfileCreationTime = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("_01_ProductCatalog.MVC.Models.Shop", b =>
