@@ -1,1 +1,22 @@
-<h1>App is running!</h1>
+@model GlobalSummeryDto
+
+<div class="container-fluid">
+    
+    <h1 class="p-3 bg-success text-white rounded">Global Summery</h1>
+
+    <div class="row p-2">
+        <div class="col-sm-3 bg-light border text-dark m-1 p-2 rounded border-1">
+            <h2>Total Sellers: <span class="fs-2 text-danger fw-bold">@Model.SellersCount</span></h2>
+        </div>
+        <div class="col-sm-3 bg-light border text-dark m-1 p-2 rounded border-1">
+            <h2>Total Shops: <span class="fs-2 text-danger fw-bold">@Model.ShopsCount</span></h2>
+        </div>
+        <div class="col-sm-3 bg-light border text-dark m-1 p-2 rounded border-1">
+            <h2>Total Products: <span class="fs-2 text-danger fw-bold">@Model.ProductsCount</span></h2>
+        </div>
+        <div class="col-sm-3 bg-light border text-dark m-1 p-2 rounded border-1">
+            <h2>Total Keywords: <span class="fs-2 text-danger fw-bold">@Model.KeywordsCount</span></h2>
+        </div>
+    </div>
+
+</div>
