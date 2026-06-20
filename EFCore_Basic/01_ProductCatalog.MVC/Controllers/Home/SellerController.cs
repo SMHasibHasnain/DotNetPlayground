@@ -21,8 +21,15 @@ public class SellerController (AppDbContext _context) : Controller
     [Route("{id}")]
     public async Task<IActionResult> SingleSellerAsync([FromRoute] string id)
     {
-        var seller = await _context.Sellers.Where(x => x.Id == id).FirstAsync();
-        
+        var seller = await _context.Sellers
+            .Include(s => s.OwnedShops)
+            .FirstOrDefaultAsync(s => s.Id == id);
+
+        if(seller == null)
+        {
+            return NotFound();
+        }    
+
         var model = new SellerDto
         {
             Id = seller.Id,

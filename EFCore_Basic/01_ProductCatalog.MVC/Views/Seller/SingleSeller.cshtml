@@ -1,13 +1,27 @@
+@using Microsoft.AspNetCore.Http.Features
 @model SellerDto
 
 <div class="container-fluid bg-light">
-    <span>@Model.Id</span><br />
+    <span class="fst-italic text-secondary">@Model.Id</span><br />
     <h1>@Model.Name</h1>
 </div>
 
 <div class="container-fluid bg-light">
+    <b>Shops:</b>
     @foreach(var item in @Model.OwnedShops) {
-        <span>@item.ShopName</span>
+         <span class="bg-warning p-1 m-1 rounded">@item.ShopName</span>
     }
 </div>
+
+
+<div class="container-fluid bg-light">
+    <p class="mt-3"><b>Bio: </b>@Model.Bio</p>
+</div>
+
+
+<div class="container-fluid bg-light">
+    <p><b>Date of Birth:</b> @Model.DateOfBirth</p>
+    <p><b>Creation Date:</b> @Model.ProfileCreationTime</p>
+</div>
+
 
