@@ -1,0 +1,28 @@
+@model SellerListDto
+
+
+
+@{
+    foreach(var item in @Model.SellerList) {
+        <div class="container p-2">
+            <div class="card">
+                <div class="card-header">ID: @item.Id</div>
+                <div class="card-body">
+                    <h2>
+                        @item.Name
+                    </h2>
+                    <p>                    
+                        @foreach(var shoplist in item.OwnedShops) {
+                            <span class="p-2 bg-secondary text-dark">@shoplist.ShopName</span>
+                        }
+                    </p>
+                    <p>    
+                        @item.Bio
+                    </p>
+                    <a asp-controller="Seller" asp-action="SingleSeller" asp-route-id="@item.Id">View Profile</a>
+                </div>
+            </div>
+        </div>
+    }
+}
+

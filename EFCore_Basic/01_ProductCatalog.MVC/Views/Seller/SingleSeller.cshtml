@@ -1,0 +1,13 @@
+@model SellerDto
+
+<div class="container-fluid bg-light">
+    <span>@Model.Id</span><br />
+    <h1>@Model.Name</h1>
+</div>
+
+<div class="container-fluid bg-light">
+    @foreach(var item in @Model.OwnedShops) {
+        <span>@item.ShopName</span>
+    }
+</div>
+
