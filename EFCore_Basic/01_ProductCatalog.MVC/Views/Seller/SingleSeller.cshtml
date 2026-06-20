@@ -1,10 +1,7 @@
 @using Microsoft.AspNetCore.Http.Features
 @model SellerDto
 
-<div class="container-fluid bg-light">
-    <span class="fst-italic text-secondary">@Model.Id</span><br />
-    <h1>@Model.Name</h1>
-</div>
+<h1 class="bg-success p-3 text-light rounded mt-3">@Model.Name</h1>
 
 <div class="container-fluid bg-light">
     <b>Shops:</b>
@@ -12,7 +9,6 @@
          <span class="bg-warning p-1 m-1 rounded">@item.ShopName</span>
     }
 </div>
-
 
 <div class="container-fluid bg-light">
     <p class="mt-3"><b>Bio: </b>@Model.Bio</p>

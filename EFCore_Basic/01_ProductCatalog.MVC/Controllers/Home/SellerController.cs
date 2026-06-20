@@ -42,4 +42,32 @@ public class SellerController (AppDbContext _context) : Controller
 
         return View(model);
     }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchByNameAsync([FromQuery] string Name)
+    {
+
+        if(string.IsNullOrWhiteSpace(Name))
+        {
+            return RedirectToAction("Sellers");
+        }
+
+        var seller = await _context.Sellers
+            .Where(x => x.Name.Contains(Name))
+            .ToListAsync();
+
+        if(!seller.Any())
+        {
+            return NotFound();
+        }
+
+        var model = new SellerListDto
+        {
+            SellerList = seller
+        };
+
+        ViewBag.Name = Name;
+
+        return View(model);
+    }
 }

@@ -1,21 +1,13 @@
+@using Bogus.DataSets
 @model SellerListDto
 
-<h1 class="bg-success text-light p-3">Sellers</h1>
-
-<div class="container-fluid d-flex flex-row justify-content-evenly align-items-center bg-secondary text-white">
-    <h3>Search By Name</h3>
-    <form class="m-2 d-flex flex-column justify-content-center" method="get" asp-controller="Seller" asp-action="SearchByName">
-        <input type="text" class="col form-control m-1" name="Name" />
-        <input type="submit" value="Search" class="col btn btn-warning m-1" />
-    </form>
-</div>
-
-<div class="m-3"></div>
+<h1 class="bg-success text-light p-3">Search Result For "@ViewBag.Name"</h1>
 
 @{
     foreach(var item in @Model.SellerList) {
         <div class="container p-2">
             <div class="card">
+                <div class="card-header fst-italic text-secondary">ID: @item.Id</div>
                 <div class="card-body">
                     <h2>
                         @item.Name
