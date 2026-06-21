@@ -26,12 +26,14 @@
         <span class="bg-info p-1 m-1 rounded">@item.ShopName</span>
     }
 
-    <form class="form">
+    <form class="form" method="post" asp-controller="Seller" asp-action="EditSeller">
         <div class="container-fluid bg-light">
-            <p class="mt-3"><b>Name: </b><textarea class="form-control">@Model.Name </textarea></p>
-            <p class="mt-3"><b>Bio: </b><textarea class="form-control">@Model.Bio </textarea></p>
+            <input asp-for="Id" type="hidden" />
+            <p class="mt-3"><b>Name: </b><textarea class="form-control" name="Name">@Model.Name </textarea></p>
+            <p class="mt-3"><b>Bio: </b><textarea class="form-control" name="Bio">@Model.Bio </textarea></p>
             <p><b>Date of Birth:</b> <input asp-for="DateOfBirth" type="Date" class="form-control" /></p>
-        <input type="submit" class="btn btn-warning" value="Update" />
+            <input type="submit" class="btn btn-warning" value="Update" />
+        </div>
     </form>
 
 

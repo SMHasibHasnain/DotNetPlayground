@@ -1,3 +1,4 @@
+using System.Reflection.Metadata.Ecma335;
 using _01_ProductCatalog.MVC.Data;
 using _01_ProductCatalog.MVC.Models;
 using Bogus.DataSets;
@@ -79,4 +80,20 @@ public class SellerController (AppDbContext _context) : Controller
 
         return View(model);
     }
+
+
+    [HttpPost("edit")]
+    public async Task<IActionResult> EditSellerAsync([FromForm] SellerDto dto)
+    {
+        var lines = await _context.Sellers
+            .Where(x => x.Id == dto.Id)
+            .ExecuteUpdateAsync(setters => setters
+                .SetProperty(t => t.Name, t => dto.Name)
+                .SetProperty(t => t.Bio, t => dto.Bio)
+                .SetProperty(t => t.DateOfBirth, t => dto.DateOfBirth)
+            );
+
+        return Redirect($"{dto.Id}");
+    }
+
 }
