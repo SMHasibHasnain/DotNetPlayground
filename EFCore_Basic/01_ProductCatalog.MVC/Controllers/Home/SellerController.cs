@@ -2,6 +2,7 @@ using _01_ProductCatalog.MVC.Data;
 using _01_ProductCatalog.MVC.Models;
 using Bogus.DataSets;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.EntityFrameworkCore;
 
 namespace _01_ProductCatalog.MVC.Controllers;
@@ -19,7 +20,7 @@ public class SellerController (AppDbContext _context) : Controller
     }
 
     [Route("{id}")]
-    public async Task<IActionResult> SingleSellerAsync([FromRoute] string id)
+    public async Task<IActionResult> SingleSellerAsync([FromRoute] string id, [FromQuery] string mode = "details")
     {
         var seller = await _context.Sellers
             .Include(s => s.OwnedShops)
@@ -40,8 +41,16 @@ public class SellerController (AppDbContext _context) : Controller
             OwnedShops = seller.OwnedShops
         };
 
+        ViewBag.action = mode;
+
         return View(model);
     }
+
+    // [HttpGet("edit/{id}")]
+    // public async Task<IActionResult> EditSellerPage([FromRoute] string id)
+    // {
+    //     var model = _context.Sellers.Where(x => x.Id == Id)
+    // }
 
     [HttpGet("search")]
     public async Task<IActionResult> SearchByNameAsync([FromQuery] string Name)

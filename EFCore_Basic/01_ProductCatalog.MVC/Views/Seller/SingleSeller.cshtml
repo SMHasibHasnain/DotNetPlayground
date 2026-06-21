@@ -3,21 +3,55 @@
 
 <h1 class="bg-success p-3 text-light rounded mt-3">@Model.Name</h1>
 
-<div class="container-fluid bg-light">
-    <b>Shops:</b>
-    @foreach(var item in @Model.OwnedShops) {
-         <span class="bg-warning p-1 m-1 rounded">@item.ShopName</span>
+<div class="m-2 p-1">
+    @if(ViewBag.action == "edit") {
+        <a asp-controller="Seller" asp-action="SingleSeller" asp-route-id="@Model.Id"  class="btn btn-warning">Cancel Edit</a> 
+        <a class="btn btn-danger mx-2">Delete</a> 
+    } else if(ViewBag.action == "delete") {
+        <a asp-controller="Seller" asp-action="SingleSeller" asp-route-id="@Model.Id"  class="btn btn-warning">Cancel Delete</a> 
+        <a asp-controller="Seller" asp-action="SingleSeller" asp-route-id="@Model.Id" asp-route-mode = "edit" class="btn btn-warning">Edit</a> 
+    } else {
+                <a asp-controller="Seller" asp-action="SingleSeller" asp-route-id="@Model.Id" asp-route-mode = "edit" class="btn btn-warning">Edit</a> 
+        <a asp-controller="Seller" asp-action="SingleSeller" asp-route-id="@Model.Id" asp-route-mode = "delete" class="btn btn-danger mx-2">Delete</a> 
     }
 </div>
 
-<div class="container-fluid bg-light">
-    <p class="mt-3"><b>Bio: </b>@Model.Bio</p>
-</div>
+@if(ViewBag.action == "edit") {
+    <div class="m-2 p-1">
+
+    </div>
+
+    <b>Shops:</b>
+    @foreach(var item in @Model.OwnedShops) {
+        <span class="bg-info p-1 m-1 rounded">@item.ShopName</span>
+    }
+
+    <form class="form">
+        <div class="container-fluid bg-light">
+            <p class="mt-3"><b>Name: </b><textarea class="form-control">@Model.Name </textarea></p>
+            <p class="mt-3"><b>Bio: </b><textarea class="form-control">@Model.Bio </textarea></p>
+            <p><b>Date of Birth:</b> <input asp-for="DateOfBirth" type="Date" class="form-control" /></p>
+        <input type="submit" class="btn btn-warning" value="Update" />
+    </form>
 
 
-<div class="container-fluid bg-light">
-    <p><b>Date of Birth:</b> @Model.DateOfBirth</p>
-    <p><b>Creation Date:</b> @Model.ProfileCreationTime</p>
-</div>
 
+} else if(ViewBag.action == "delete") {
+    <p>Are you sure?</p>
+    <button class="btn btn-danger">Delete</button>
 
+} else {
+    <div class="container-fluid bg-light">
+        <b>Shops:</b>
+        @foreach(var item in @Model.OwnedShops) {
+            <span class="bg-info p-1 m-1 rounded">@item.ShopName</span>
+        }
+    </div>
+    <div class="container-fluid bg-light">
+        <p class="mt-3"><b>Bio: </b>@Model.Bio</p>
+    </div>
+    <div class="container-fluid bg-light">
+        <p><b>Date of Birth:</b> @Model.DateOfBirth</p>
+        <p><b>Creation Date:</b> @Model.ProfileCreationTime</p>
+    </div>
+}
