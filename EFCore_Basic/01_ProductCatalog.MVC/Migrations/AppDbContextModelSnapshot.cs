@@ -209,7 +209,8 @@ namespace _01_ProductCatalog.MVC.Migrations
                 {
                     b.HasOne("_01_ProductCatalog.MVC.Models.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryName");
+                        .HasForeignKey("CategoryName")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("_01_ProductCatalog.MVC.Models.Shop", "Shop")
                         .WithMany("Products")
@@ -226,7 +227,8 @@ namespace _01_ProductCatalog.MVC.Migrations
                 {
                     b.HasOne("_01_ProductCatalog.MVC.Models.Seller", "Owner")
                         .WithMany("OwnedShops")
-                        .HasForeignKey("OwnerId");
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Owner");
                 });

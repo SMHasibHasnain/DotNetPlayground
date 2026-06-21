@@ -11,7 +11,7 @@
         <a asp-controller="Seller" asp-action="SingleSeller" asp-route-id="@Model.Id"  class="btn btn-warning">Cancel Delete</a> 
         <a asp-controller="Seller" asp-action="SingleSeller" asp-route-id="@Model.Id" asp-route-mode = "edit" class="btn btn-warning">Edit</a> 
     } else {
-                <a asp-controller="Seller" asp-action="SingleSeller" asp-route-id="@Model.Id" asp-route-mode = "edit" class="btn btn-warning">Edit</a> 
+        <a asp-controller="Seller" asp-action="SingleSeller" asp-route-id="@Model.Id" asp-route-mode = "edit" class="btn btn-warning">Edit</a> 
         <a asp-controller="Seller" asp-action="SingleSeller" asp-route-id="@Model.Id" asp-route-mode = "delete" class="btn btn-danger mx-2">Delete</a> 
     }
 </div>
@@ -38,9 +38,18 @@
 
 
 
+
 } else if(ViewBag.action == "delete") {
-    <p>Are you sure?</p>
-    <button class="btn btn-danger">Delete</button>
+
+    <div class="container-fluid">
+        <h3>Are you sure?</h3>
+        <form method="post" asp-controller="Seller" asp-action="DeleteSeller" asp-route-id="@Model.Id">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit"  class="btn btn-danger" value="Delete" />
+        </form>
+    </div>
+
+
 
 } else {
     <div class="container-fluid bg-light">

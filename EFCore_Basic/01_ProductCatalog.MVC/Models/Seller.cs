@@ -25,4 +25,4 @@ public class Seller
 
     // Navigation Property 
     public List<Shop> OwnedShops { get; set; } = [];
-}
+}   

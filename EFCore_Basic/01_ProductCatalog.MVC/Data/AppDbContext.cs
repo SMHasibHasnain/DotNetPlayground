@@ -12,6 +12,37 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext (o
     public DbSet<Keyword> Keywords { get; set; }
     public DbSet<Category> Categories { get; set; }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Shop>()
+            .HasOne(x => x.Owner)
+            .WithMany(x => x.OwnedShops)
+            .HasForeignKey(x => x.OwnerId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Product>() 
+            .HasOne(x => x.Shop)
+            .WithMany(x => x.Products)
+            .HasForeignKey(x => x.ShopId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Category>()
+            .HasOne(x => x.Shop)
+            .WithMany(x => x.Categories)
+            .HasForeignKey(x => x.ShopId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Product>()
+            .HasOne(x => x.Category)
+            .WithMany(x => x.Products)
+            .HasForeignKey(x => x.CategoryName)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<Product>()
+            .HasMany(x => x.Keywords)
+            .WithMany(x => x.Products);
+    }
+
     // protected override void OnModelCreating(ModelBuilder modelBuilder)
     // {
     //     modelBuilder.Entity<Seller>().HasData(

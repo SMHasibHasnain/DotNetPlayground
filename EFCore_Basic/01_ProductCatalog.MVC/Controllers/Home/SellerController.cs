@@ -96,4 +96,16 @@ public class SellerController (AppDbContext _context) : Controller
         return Redirect($"{dto.Id}");
     }
 
+    [HttpPost("delete")]
+    public async Task<IActionResult> DeleteSellerAsync([FromForm] string id)
+    {
+        var lines = await _context.Sellers
+            .Where(x => x.Id == id)
+            .ExecuteDeleteAsync();
+
+        System.Console.WriteLine(lines);
+
+        return Redirect("/Seller");    
+    }
+
 }
