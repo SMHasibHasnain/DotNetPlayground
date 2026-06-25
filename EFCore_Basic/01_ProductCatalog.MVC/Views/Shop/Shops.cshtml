@@ -1,0 +1,36 @@
+@model ShopListDto
+
+<h1 class="bg-success text-light p-3">Shops</h1>
+
+@* <div class="container-fluid d-flex flex-row justify-content-evenly align-items-center bg-secondary text-white">
+    <h3>Search By Name</h3>
+    <form class="m-2 d-flex flex-column justify-content-center" method="get" asp-controller="Seller" asp-action="SearchByName">
+        <input type="text" class="col form-control m-1" name="Name" />
+        <input type="submit" value="Search" class="col btn btn-warning m-1" />
+    </form>
+</div> *@
+
+<div class="m-3"></div>
+
+@{
+    foreach(var item in @Model.AllShops) {
+        <div class="container p-2">
+            <div class="card">
+                <div class ="card-header">
+                    @item.CreationTime
+                </div>
+                <div class="card-body">
+                    <h2>
+                        @item.ShopName
+                    </h2>
+                    <span class="p-1 rounded bg-success text-light">@item.Owner?.Name</span>
+                    <p class="mt-2">    
+                        @item.ShopDescription
+                    </p>
+                    @* <a asp-controller="Seller" asp-action="SingleSeller" asp-route-id="@item.Id" class="text-success fw-bold">View Profile</a> *@
+                </div>
+            </div>
+        </div>
+    }
+}
+
