@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace _01_ProductCatalog.MVC;
 
-[Route("[controller]")]
+[Route("shops")]
 public class ShopController(AppDbContext _context) : Controller
 {
     [HttpGet("")]
