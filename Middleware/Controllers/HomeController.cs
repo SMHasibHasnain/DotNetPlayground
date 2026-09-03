@@ -8,13 +8,26 @@ public class HomeController : ControllerBase
 {   
     
     [HttpGet]
-    public IActionResult Index()
+    public ActionResult<Person[]> Index()
     {
-        return Ok("Working Home/Index well...");
+        Person[] arr1 = new Person[]
+        { 
+            new() { Name = "Hasib", Message = "Hello World" },
+            new() { Name = "Hamim", Message = "Wanna Eat!" },
+
+        };
+
+        return arr1;
     }
 
     public IActionResult About()
     {
         return Ok("Say something about you...");
     }
+}
+
+public class Person
+{
+    public string Name { get; set; } = string.Empty;
+    public string Message { get; set; } = string.Empty;
 }
