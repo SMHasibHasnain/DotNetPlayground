@@ -1,9 +1,9 @@
 using Middleware.CustomExtensions;
 using Middleware.CustomExtentions;
-using Middleware.CustomMiddlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
@@ -14,7 +14,6 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
-
 
 var app = builder.Build();
 
