@@ -1,5 +1,4 @@
-﻿using System.Reflection.Metadata;
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
 
 using var client = new HttpClient();
 
